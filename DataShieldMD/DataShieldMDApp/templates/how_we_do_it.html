@@ -1,0 +1,79 @@
+<!--
+Extends the base template for consistent layout 
+
+This is the template for the "how we do it" page.
+
+As this page is quite straightforward there isn't much to explain.
+This page simply gives more of information about dataset privacy, the algorithms, and links to additional reasources.
+-->
+{% extends "partials/base.html" %}
+{% load static %}
+{% block content %}
+<section class="how-we-do-it">
+    <h1>How We Do It</h1>
+    <div class="section background">
+        <h2>Background</h2>
+        <p>
+            Within datasets there are certain fields that are called <strong>explicit identifiers</strong> like complete addresses, full names, Personal Health Numbers. Malicious agents can use those identifiers to easily find the individual to whom the information is linked. As a result this type of data should be omitted completely and won’t impact the utility of the data much.
+        </p>
+        <p>
+            However, there are <strong>quasi-identifiers </strong>such as zip-codes, birth dates, sex, etc. These are not as easy to use but combining them with public databases, personal knowledge, and other such sources still make it possible for an individual to be identified. Unfortunately these types of values can’t but fully omitted because they would impact the utility of the dataset. For example no zip-code, sex, or birth dates would severely limit the demographic information that could have been extracted from the dataset.
+        </p>
+        <p>
+            As a result there have been several different algorithms like k-anonymity, l-diversity, and t-closeness were created for the purpose of abstracting these values. These algorithms do the abstraction to such a degree that it is much more difficult to resolve an individuals identity and the <strong>quasi-identifiers</strong> can be kept to provide data utility.
+        </p>
+    </div>
+
+    <div class="section importance">
+        <h2>Why does this identity disclosure matter?</h2>
+        <p>
+            Datasets, especially in industries like Health Care, will contain sensitive information that should not be shared. If an individuals identity is exposed then so is their sensitive information. Malicious agents may then use this new knowledge to harm, blackmail, etc, the person in question.
+        </p>
+        <p>
+            Therefore ensuring identity disclosure does not occur is critical so organization can use the dataset to draw critical insights which they want to publicly disclose along with the dataset itself.
+        </p>
+    </div>
+
+    <div class="section kanonymity">
+        <h2>K-anonymity</h2>
+        <p>
+            This algorithm partially obscures quasi-identifiers, e.g., blurring the last three digits of a zip code or a single digit for age. Then the data is sorted into groups of some given value (K) minus one, making it much harder to identify individuals.
+        </p>
+        <p>
+            Please see figure below as example of <strong>K-anonymity</strong>:
+        </p>
+        <img src="{% static 'img/kanonymity_example.jpg' %}" alt="K-anonymity example">
+    </div>
+
+    <div class="section ldiversity">
+        <h2>L-diversity</h2>
+        <p>
+            L-diversity is an extension of K-anonymity resolving one of its issues. This problem being even if identifiers are obscured and all data is in groups of K-1, if the sensitive values are not diverse enough then the sensitive information can still be linked to the individual. Please look at the figure for K-anonymity to see this.
+        </p>
+        <p>
+            L-diversity takes this one level further and ensures that there are at least L diverse sensitive values in each grouping. Now it is not possible to figure out which sensitive value belongs to which individual because.
+        </p>
+        <p>
+            Please see figure below as example <strong>L-diversity</strong>:
+        </p>
+        <img src="{% static 'img/ldiversity_example.jpg' %}" alt="L-diversity example">
+    </div>
+
+    <div class="section tcloseness">
+        <h2>T-closeness</h2>
+        <p>
+            This algorithm is much more complex than the other two above but instead provides more flexibility.  Essentially one needs to provide a value <strong>T</strong> between 0 and 1 to the algorithm. Based the value the algorithm focuses more on data privacy and security or more on data utility. The closer to 0 the value the less security but more utility is provided by the processed data set while closer to 1 does the opposite. This T value is used a threshold for similarity of sensitive values.
+        </p>
+        <p>
+            Please note the reason you should not select 1 every time is because identifiers get obscured so much that the data no longer can provide any real utility or insights. However, playing around with different values can help achieve the balance between utility and security desired by the user.
+        </p>
+    </div>
+
+    <div class="section resources">
+        <h2>Links To More Resources</h2>
+        <p>This section provides resources which go more indepth about the algorithms specified above.</p>
+        <p><a href="https://elf11.github.io/2017/04/22/kanonymity.html">K-anonymity and L-Diversity Information</a></p>
+        <p><a href="https://www.cs.purdue.edu/homes/ninghui/papers/t_closeness_icde07.pdf">T-closeness Documentation</a></p>
+    </div>
+</section>
+{% endblock %}

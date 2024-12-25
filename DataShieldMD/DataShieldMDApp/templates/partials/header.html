@@ -1,0 +1,58 @@
+{% load static %}
+<!--
+This styling is for the entire header of the application.
+
+This includes the application name, logo, navigation bar, and login/register buttons.
+-->
+<nav class="navbar-header">
+    <!--
+    This section is for the name and logo.
+    -->
+    <div class="logo-section">
+        <span>Data Shield MD</span>
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'img/DataShieldMDlogo.jpg' %}" alt="Data Shield MD Logo">
+            </a>
+        </div>
+    </div>
+
+    <!--
+    This section is for the navigation bar through which users and access different pages.
+
+    Please note depedning on if the user is logged in (authenticated) or not they have access to a different amount of pages.
+    -->
+    <div class="center-section">
+        {% if user.is_authenticated %}
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'how_we_do_it' %}">How We Do It</a></li>
+                <li><a href="{% url 'upload_file' %}">File Upload</a></li>
+                <li><a href="{% url 'algorithm_selection' %}">Algorithm Selection and Processing</a></li>
+                <li><a href="{% url 'processed_datasets' %}">Processed Datasets</a></li>
+            </ul>
+        {% else %}
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'how_we_do_it' %}">How We Do It</a></li>
+            </ul>
+        {% endif %}
+    </div>
+
+    <!--
+    This section is for the login and resgister button.
+
+    However, if user is logged in the displays their username and a logout button instead.
+    -->
+    <div class="auth-section">
+        {% if user.is_authenticated %}
+            <div class="user-info">
+                <span class="username">{{ user.username }}</span>
+                <button class="auth-btn"><a href="{% url 'logout' %}">Logout</a></button>
+            </div>
+        {% else %}
+            <button class="auth-btn"><a href="{% url 'login' %}">Login</a></button>
+            <button class="auth-btn"><a href="{% url 'register' %}">Register</a></button>
+        {% endif %}
+    </div>
+</nav>

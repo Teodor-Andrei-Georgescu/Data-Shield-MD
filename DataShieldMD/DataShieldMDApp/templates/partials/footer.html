@@ -1,0 +1,22 @@
+{% load static %}
+<!-- 
+This is the HTML page for the footer. 
+
+There aren't many elements in this page just an application name, logo, and contact email.
+-->
+<nav class="navbar-footer">
+    <div class="navdiv">
+        <div class="logo-section">
+            <span>Data Shield MD</span>
+            <div class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'img/DataShieldMDlogo.jpg' %}" alt="Data Shield MD Logo">
+                </a>            
+            </div>
+        </div>
+        <div class="contact-info">
+            <p class="contact-us">Contact us</p>
+            <p>Email: <a href="mailto:DataShieldMD@gmail.com">DataShieldMD@gmail.com</a></p>
+        </div>
+    </div>
+ </nav>

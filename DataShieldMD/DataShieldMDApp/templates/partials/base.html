@@ -1,0 +1,56 @@
+<!--
+This entire template is used as the base for all the page.
+
+It loads the header template at the top and footer template at the bottom.
+Then in between the header and footer is where the body content goes which will be a template for each respective page.
+
+Furthermore, this template is also where the CSS styling file in embedded to style all the pages.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Data Shield MD</title>
+    <meta name="description" content="A brief description" />
+    <meta
+      name="Teodor Andrei Georgescu"
+      content="A web application uses where one can upload medical datasets and get them prepared for publishing."
+    />
+    {% load static %}
+    <!-- Include your CSS files here -->
+    <link
+      rel="stylesheet"
+      href="{% static 'css/style.css' %}"
+    />
+    
+  </head>
+
+  <body>
+    <!--This loads the header template.-->
+    {% include "partials/header.html" %}
+    
+    <!--This ensures messages get displayed on the page.-->
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }}">
+          <span>{{ message }}</span>
+          <button class="close-button" onclick="this.parentElement.style.display='none';">&times;</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!--This block section is where the respective page templates will be loaded once they extend this base template.-->
+    <main>
+       {% block content %}
+        
+       {% endblock %}
+    </main>
+
+    <!--This loads the footer template.-->
+    {% include "partials/footer.html" %}
+  </body>
+</html>

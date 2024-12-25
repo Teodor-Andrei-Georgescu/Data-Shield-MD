@@ -1,0 +1,139 @@
+<!-- 
+Extends the base template for consistent layout 
+
+This is the template for our algorithm selection page. 
+-->
+{% extends 'partials/base.html' %}
+{% block content %}
+{% load static %}
+<div class="file-upload-container">
+    <!-- Page header displaying the current user's username -->
+    <h2>{{ user.username }}'s Algorithm Selection and Processing</h2>
+    
+    <!-- Instructions for the user and a tutorial video.-->
+    <p><b>Instructions:</b></p>
+    <ul>
+        <li>Select a file from your uploaded files directory.</li>
+        <li>Specify the sensitive field (currently only support one field).</li>
+        <li>Choose at least one anonymization algorithm and provide its parameter(s).</li>
+        <li>All K-Values, and the L-Value mentioned below can not be bigger than the number of rows in the selected file.</li>
+        <li>For K-Anonymity the K value must be specified and must atleast 2.</li>
+        <li>For L-Diversity you can specifiy a K value which must be atleast 2, or if none is specifed then the K value will equal your L value. You must specify an L value greater than 2 and if a K value is specified the L value can not be greater than that K value.</li>
+        <li>For T-Closeness the K value must be specified and must be atleast 2. The T value must also be specified and must be between 0 and 1.</li>
+        <video width="640" height="360" controls>
+            <source src="{% static 'videos/tutorial.mp4' %}" type="video/mp4">
+            Tutorial explaining how to use alogrithm selection and what each paramater means.
+        </video>
+    </ul>
+
+    <!-- Display non-field errors, if any -->
+    {% if form.non_field_errors %}
+    <div class="alert error">
+        <ul>
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <!-- Algorithm selection and processing form -->
+    <form class="algorithm_selection_form" method="post">
+        {% csrf_token %}
+        <!-- File Selection -->
+        <div>
+            <label for="file">Select File:</label>
+            {{ form.file }}
+            <!-- Display errors related to file selection -->
+            {% if form.file.errors %}
+            <div class="field-error">{{ form.file.errors|join:", " }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Sensitive Fields Section -->
+        <div>
+            <label for="sensitive_fields">{{ form.sensitive_fields.label }}</label>
+            {{ form.sensitive_fields }}
+            <!-- Display errors related to sensitive field input -->
+            {% if form.sensitive_fields.errors %}
+            <div class="field-error">{{ form.sensitive_fields.errors|join:", " }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Algorithm Selection -->
+        <fieldset>
+            <legend>Select Anonymization Algorithms:</legend>
+            
+            <!-- K-Anonymity Configuration and displaying K-Anonymity errors-->
+            <div>
+                {{ form.k_anonymity }}
+                <label for="k_anonymity">{{ form.k_anonymity.label }}</label>
+                {{ form.k_anonymity_k_value }}
+                {% if form.k_anonymity_k_value.errors %}
+                <div class="field-error">{{ form.k_anonymity_k_value.errors|join:", " }}</div>
+                {% endif %}
+            </div>
+            
+            <!-- L-Diversity Configuration and displaying L-Diversity errors -->
+            <div>
+                {{ form.l_diversity }}
+                <label for="l_diversity">{{ form.l_diversity.label }}</label>
+                
+                {{ form.l_diversity_k_value }}
+                {% if form.l_diversity_k_value.errors %}
+                <div class="field-error">{{ form.l_diversity_k_value.errors|join:", " }}</div>
+                {% endif %}
+                
+                {{ form.l_value }}
+                {% if form.l_value.errors %}
+                <div class="field-error">{{ form.l_value.errors|join:", " }}</div>
+                {% endif %}
+            </div>
+            
+            <!-- T-Closeness Configuration and displaying T-Closeness errors -->
+            <div>
+                {{ form.t_closeness }}
+                <label for="t_closeness">{{ form.t_closeness.label }}</label>
+                
+                {{ form.t_closeness_k_value }}
+                {% if form.t_closeness_k_value.errors %}
+                <div class="field-error">{{ form.t_closeness_k_value.errors|join:", " }}</div>
+                {% endif %}
+                
+                {{ form.t_value }}
+                {% if form.t_value.errors %}
+                <div class="field-error">{{ form.t_value.errors|join:", " }}</div>
+                {% endif %}
+            </div>
+        </fieldset>
+
+        <button type="submit" class="btn">Process File</button>
+    </form>
+</div>
+
+<script>
+    // Dynamically toggle input fields based on checkbox state for each algorithm
+    document.addEventListener('DOMContentLoaded', function () {
+        // Select all algorithm parameter inputs
+        const toggleInputs = document.querySelectorAll('.algorithm-param');
+        // Get the corresponding checkbox ID
+        toggleInputs.forEach(input => {
+            const checkboxId = `id_${input.dataset.algo}`;
+            const checkbox = document.getElementById(checkboxId);
+
+            if (checkbox) {
+                // Toggle visibility based on checkbox state
+                input.style.display = checkbox.checked ? 'block' : 'none';
+                checkbox.addEventListener('change', () => {
+                    input.style.display = checkbox.checked ? 'block' : 'none';
+                    // Clear value when unchecked
+                    if (!checkbox.checked) input.value = ''; 
+                });
+            }
+        });
+    });
+</script>
+{% endblock %}
+

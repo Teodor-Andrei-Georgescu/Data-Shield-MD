@@ -1,0 +1,52 @@
+<!--
+Extends the base template for consistent layout 
+
+This template is for the register page.
+
+There isnt much because there exists a built-in django registration form.
+I did however, make some slight changes to the from but nonetheless we still simply load that form field by field.
+-->
+{% extends "partials/base.html" %}
+{% load static %}
+{% block content %}
+<div class="register-container">
+    <h2>Register</h2>
+    
+    <!-- Display non-field errors, which are those not related to a specific input field.-->
+    {% if form.non_field_errors %}
+    <div class="form-error">
+        {{ form.non_field_errors }}
+    </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Render individual field errors and help text -->
+        <div class="form-fields">
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+
+                 <!-- Display field-specific help text -->
+                 {% if field.help_text %}
+                 <small class="help-text">{{ field.help_text }}</small>
+                 {% endif %}
+                
+                <!-- Display field-specific errors -->
+                {% if field.errors %}
+                <div class="field-error">
+                    {{ field.errors  }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="register-button">Register</button>
+    </form>
+    
+    <a href="{% url 'login' %}" class="login-link">Already have an account? Login here.</a>
+</div>
+{% endblock %}

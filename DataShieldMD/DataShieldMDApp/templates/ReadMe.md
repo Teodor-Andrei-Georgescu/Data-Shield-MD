@@ -1,0 +1,1 @@
+This whole folder is used to store all the HTML templates that used for each page in the web application.

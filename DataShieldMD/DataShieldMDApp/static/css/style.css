@@ -1,0 +1,640 @@
+/*
+Every comment in this file is is describing the code underneath until the next comment.
+
+This first bit is used to style the "header.html" file.
+*/
+.navbar-header {
+    background-color: #9fbb9a;
+    font-family: calibri;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid lightgray;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo-section .logo img {
+    width: 75px;
+    height: 50px;
+    border-radius: 65%;
+    margin-left: 10px;
+}
+.logo-section span{
+    font-size: 20px;
+    font-weight: 600;
+    color: #111111;
+}
+.navdiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    gap: 5px; 
+}
+
+.username {
+    font-size: 16px;
+    font-weight: bold;
+    color: #111111;
+    margin-bottom: 4px;
+}
+
+.center-section ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.center-section li a {
+    color: #111111;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    text-decoration: underline;
+
+}
+
+.center-section li a:hover {
+    color: #5a5959;
+    text-decoration: underline;
+}
+
+.auth-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-btn {
+    font-size: 0.9rem;
+    cursor: pointer;
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 10px;
+    width: 90px;
+    transition: background-color 0.3s ease;
+}
+
+.auth-btn a {
+    color: #111111;
+    font-weight: bold;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.auth-btn:hover {
+    background-color: #818080;
+}
+/*
+This next section is for styling the footer of my webpage.
+*/
+.navbar-footer {
+    background-color: #9fbb9a;
+    font-family: calibri;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid lightgray;
+}
+
+.contact-info {
+    text-align: center; 
+}
+
+.contact-us {
+    font-weight: bold;
+    margin-bottom: 5px; 
+}
+
+.contact-info p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.contact-info a {
+    color: #3352aa;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+    color: #5a5959
+}
+/*
+This next section is for styling the "how we do it page"
+*/
+.how-we-do-it {
+    text-align: center;
+    padding: 20px;
+}
+
+.how-we-do-it h1, .how-we-do-it h2 {
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.section {
+    max-width: auto;
+    margin: 30px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section p {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.section img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+}
+
+.section a {
+    color: #3352aa;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.section a:hover {
+    text-decoration: underline;
+}
+.service-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+/*
+This next section is for styling the "home page" which may also be referd to as the landing page.
+
+It is very short because a majority of styling elements were used from the "how we do it" section to ensure consistency across these pages.
+*/
+.home {
+    text-align: center;
+    padding: 20px;
+}
+
+.home h1, .home h2 {
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+/*
+This next section is for styling the login and register pages.
+
+No usage of components from any of the sections above.
+Only ensured to use same color scheme for conistency.
+*/
+.login-container,
+.register-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.login-container h2,
+.register-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-fields p {
+    margin: 10px 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.form-group input.error {
+    border-color: #f5c6cb;
+    background-color: #f8d7da;
+}
+
+.field-error {
+    color: #721c24;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.help-text {
+    color: #000000;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+.login-button,
+.register-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #9fbb9a;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover,
+.register-button:hover {
+    background-color: #ccc;
+}
+
+.register-link,
+.login-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.register-link:hover,
+.login-link:hover {
+    text-decoration: underline;
+}
+
+.form-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/*
+This next section is styling for messages that appear at the top of the screen.
+
+This includes both success and erroor message styling.
+*/
+.messages {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    z-index: 1000;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.alert {
+    margin-bottom: 10px;
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.alert.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+.alert.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeeba;
+}
+
+.alert.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-color: #bee5eb;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    float: right;
+    color: #000;
+}
+
+.close-button:hover {
+    color: red;
+}
+
+/* 
+This next section is for styling the file upload page.
+
+I opted to not use components of "home" and "how we do it" pages because these is the first page with utility.
+As a result this will follow the same color scheme but use its own element.
+*/
+.file-upload-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.file-upload-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.file-upload-container form {
+    margin-bottom: 30px;
+}
+
+.file-upload-container form input,
+.file-upload-container form button {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.file-upload-container form input[type="text"] {
+    width: calc(100% - 22px); /* Full width, accounting for padding */
+}
+
+.file-upload-container .btn {
+    background-color: #9fbb9a;
+    color: #000000;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.file-upload-container .btn:hover {
+    background-color: #ccc;
+}
+
+.file-upload-container .search-form {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.file-upload-container .search-form input {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.file-upload-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.file-upload-container table th,
+.file-upload-container table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.file-upload-container table th {
+    background-color: #f1f1f1;
+}
+
+.file-upload-container table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.file-upload-container table .empty {
+    text-align: center;
+    color: #777;
+}
+
+.file-upload-container table .file-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #000000;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.file-upload-container table .file-name:hover {
+    color: #000000;
+    text-decoration: none;
+}
+
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.file-label {
+    padding: 10px 20px;
+    background-color: #9fbb9a;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.file-label:hover {
+    background-color: #ccc;
+}
+
+#file-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #000000; 
+    background-color: #cbddcc; 
+    padding: 5px 10px; 
+    border-radius: 5px; 
+    margin-left: 10px; 
+    display: inline-block; 
+}
+/*
+This section is still for the file upload page but this is for styling the pagnation feature.
+
+This also ends up being used in the processed datasets page.
+*/
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pagination .step-links a {
+    color: #000000;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination .step-links a:hover {
+    background-color: #f1f1f1;
+}
+
+.pagination .step-links .current {
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #e9ecef;
+    color: #333;
+}
+/*
+This section is also for file upload but is for styling the switch to toggle between currently stored files and all files ever stored.
+
+Also for styling the search bar.
+*/
+.search-form {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+    margin-bottom: 20px; 
+}
+.search-row {
+    display: flex;
+    flex-direction: row; 
+    gap: 10px; 
+    margin-bottom: 20px; /
+}
+
+.toggle-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start; 
+    margin-top: 10px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #9fbb9a;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+/*
+This section below is for the algorithm slection page.
+
+Mostly used components from file upload styling to maintain conistent look.
+*/
+.algorithm_selection_form  div {
+    margin-bottom: 20px;
+}
+
+.algorithm_selection_form fieldset  {
+    border-radius: 10px;
+}
+.file-upload-container li {
+    margin-bottom: 15px;
+}
+/*
+There is no section for the processed datasets page as it entirely inherits components used above. 
+
+The majority are from the file upload styling to ensure a consistent look.
+*/
